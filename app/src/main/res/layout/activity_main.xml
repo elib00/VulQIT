@@ -2,57 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2196F3"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/contentContainer"
+
+    <FrameLayout
+        android:id="@+id/fragmentsContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/navigationContainer"
+        android:layout_above="@id/bottomNavContainer"
+        android:layout_marginEnd="413dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="Home Page"
-            android:textColor="#FFFFFF"
-            android:textSize="50sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/navigationContainer"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavContainer"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#00BCD4"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contentContainer">
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/outline_arrow_outward_24" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icon_to_home" />
-
-    </LinearLayout>
+        app:menu="@menu/bottom_nav_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
