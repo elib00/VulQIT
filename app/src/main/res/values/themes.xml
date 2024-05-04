@@ -3,6 +3,8 @@
     <style name="Base.Theme.VulQIT" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="Theme.VulQIT" parent="Base.Theme.VulQIT" />

@@ -1,5 +1,6 @@
 package com.example.vulqit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,9 +38,11 @@ public class ShopsFragment extends Fragment {
     //for the app's functionalities
     private SearchView searchView;
     private RecyclerView shopsListContainer;
-    private ArrayList<Shop> shopArrayList;
+    private List<Shop> shops;
+    private List<Shop> shopsListQuery;
     private String[] shopNames;
     private int[] imageResourceIDs;
+    private CustomAdapter adapter;
 
     public ShopsFragment() {
         // Required empty public constructor
@@ -76,28 +81,46 @@ public class ShopsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_shops, container, false);
-        initializeFragment(view);
-        return view;
+        return inflater.inflate(R.layout.fragment_shops, container, false);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        dataInitialize();
+        initializeFragment();
 
         shopsListContainer = (RecyclerView) view.findViewById(R.id.shopsListContainer);
         shopsListContainer.setLayoutManager(new LinearLayoutManager(getContext()));
         shopsListContainer.hasFixedSize();
 
-        CustomAdapter adapter = new CustomAdapter(getContext(), shopArrayList);
+        adapter = new CustomAdapter(getContext(), shopsListQuery);
         shopsListContainer.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        //for the search bar
+        searchView = (SearchView) view.findViewById(R.id.shopsSearchbar);
+        searchView.clearFocus();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+//                shops = originalShopsList;
+                filterList(s);
+                return true;
+            }
+        });
     }
 
-    private void dataInitialize(){
-        shopArrayList = new ArrayList<>();
+    private void initializeFragment(){
+        shops = new ArrayList<>();
+        shopsListQuery = new ArrayList<>();
 
         shopNames = new String[]{
                 getString(R.string.balud),
@@ -117,13 +140,31 @@ public class ShopsFragment extends Fragment {
 
         for(int i = 0; i < shopNames.length; i++){
             Shop shop = new Shop(imageResourceIDs[i], shopNames[i]);
-            shopArrayList.add(shop);
+            shops.add(shop);
+        }
+
+        shopsListQuery.addAll(shops);
+    }
+
+    private void filterList(String text){
+        List<Shop> filteredList = new ArrayList<>();
+        for(Shop shop : shops){
+            //if the text on the search bar matches the name of the shop
+            if(shop.getShopName().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(shop);
+            }
+        }
+
+        if(filteredList.isEmpty()){
+            Toast.makeText(getContext(), "Vulcanizing shop not found.", Toast.LENGTH_SHORT).show();
+        }else{
+            setFilteredList(filteredList);
         }
     }
 
-    private void initializeFragment(View view){
-        searchView = (SearchView) view.findViewById(R.id.shopsSearchbar);
-        searchView.clearFocus();
+    public void setFilteredList(List<Shop> newList){
+        shopsListQuery.clear();
+        shopsListQuery.addAll(newList);
+        adapter.notifyDataSetChanged();
     }
-
 }
