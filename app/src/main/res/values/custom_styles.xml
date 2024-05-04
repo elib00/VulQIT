@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="customRoundedCorner">
+        <item name="cornerSize">10%</item> <!-- or use 10% if you prefer percentage based -->
+    </style>
+</resources>
