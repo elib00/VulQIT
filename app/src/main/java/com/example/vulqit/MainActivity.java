@@ -17,10 +17,10 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
     ShopsFragment shopsFragment = new ShopsFragment();
     MapFragment mapFragment = new MapFragment();
+    BottomNavigationView bottomNavigationView;
 
 
     @Override
@@ -28,21 +28,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
         initializeView();
     }
 
     private void initializeView(){
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavContainer);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentsContainer, homeFragment).commit();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.home){
+                    System.out.println("home ni");
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentsContainer, homeFragment).commit();
                 }else if(item.getItemId() == R.id.map){
+                    System.out.println("maps ni");
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentsContainer, mapFragment).commit();
                 }else if(item.getItemId() == R.id.shops){
+                    System.out.println("shops ni");
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentsContainer, shopsFragment).commit();
                 }
                 
