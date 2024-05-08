@@ -48,7 +48,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         });
     }
 
-    @Override
+    @Override   
     public int getItemCount() {
         return shops.size();
     }

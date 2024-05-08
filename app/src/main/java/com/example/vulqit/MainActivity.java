@@ -2,20 +2,23 @@ package com.example.vulqit;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-    HomeFragment homeFragment = new HomeFragment();
-    ShopsFragment shopsFragment = new ShopsFragment();
-    MapFragment mapFragment = new MapFragment();
+    private final HomeFragment homeFragment = new HomeFragment();
+    private final ShopsFragment shopsFragment = new ShopsFragment();
+    private final MapFragment mapFragment = new MapFragment();
     BottomNavigationView bottomNavigationView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,4 +53,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-}
+
+
+;}
