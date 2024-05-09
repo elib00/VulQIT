@@ -1,7 +1,10 @@
 package com.example.vulqit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final HomeFragment homeFragment = new HomeFragment();
     private final ShopsFragment shopsFragment = new ShopsFragment();
-    private final MapFragment mapFragment = new MapFragment();
-    BottomNavigationView bottomNavigationView;
+    private MapFragment mapFragment = new MapFragment();
+    public BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initializeView();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            System.out.println("okayy");
+            double latitude = data.getDoubleExtra("latitude", 0.0);
+            double longitude = data.getDoubleExtra("longitude", 0.0); // Get longitude value
+
+            mapFragment = MapFragment.newInstance(latitude, longitude);
+            bottomNavigationView.setSelectedItemId(R.id.map);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentsContainer, mapFragment).commit();
+        }
+
+        System.out.println("debugging");
+    }
+
 
     private void initializeView(){
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavContainer);
@@ -53,6 +74,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-;}
+}

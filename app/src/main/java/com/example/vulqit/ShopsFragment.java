@@ -164,9 +164,9 @@ public class ShopsFragment extends Fragment {
         };
 
         locations = new String[] {
-                "Balud, Dalagute, Cebu",
+                "Balud, Dalaguete, Cebu",
                 "Guiwanon, Dalaguete, Cebu",
-                "Solong-on, Dalagute, Cebu",
+                "Solong-on, Dalaguete, Cebu",
                 "Cawayan, Dalaguete, Cebu",
                 "Casay, Dalaguete, Cebu"
         };

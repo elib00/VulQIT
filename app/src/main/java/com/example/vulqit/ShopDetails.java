@@ -1,5 +1,7 @@
 package com.example.vulqit;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,11 +22,11 @@ public class ShopDetails extends AppCompatActivity {
     TextView location;
     TextView operatingHours;
     Button backButton;
+    Button jumpToLocationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_shop_details);
 //
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -52,6 +54,7 @@ public class ShopDetails extends AppCompatActivity {
         }
 
         backButton = (Button) findViewById(R.id.backButton);
+        jumpToLocationButton = (Button) findViewById(R.id.jumpToLocationButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             //exit the page
             @Override
@@ -59,5 +62,27 @@ public class ShopDetails extends AppCompatActivity {
                 finish();
             }
         });
+
+        jumpToLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Retrieve latitude and longitude values
+                assert values != null;
+                double latitude = values.getDouble("latitude");
+                double longitude = values.getDouble("longitude");
+                System.out.println(latitude);
+                System.out.println(longitude);
+
+                // Create an intent to navigate back to MapFragment
+                Intent intent = new Intent(ShopDetails.this, MainActivity.class);
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
+                setResult(Activity.RESULT_OK, intent);
+                System.out.println("na finish na");
+                finish();
+            }
+        });
+
+
     }
 }

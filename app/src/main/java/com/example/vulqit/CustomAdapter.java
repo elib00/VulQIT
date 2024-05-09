@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.imageview.ShapeableImageView;
@@ -39,6 +40,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) context;
+
                 Intent intent = new Intent(context, ShopDetails.class);
                 intent.putExtra("image", shop.getShopImage());
                 intent.putExtra("shop_name", shop.getShopName());
@@ -49,7 +52,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                 intent.putExtra("latitude", shop.getLatitude());
                 intent.putExtra("longitude", shop.getLongitude());
 
-                context.startActivity(intent);
+                activity.startActivityForResult(intent, 1);
             }
         });
     }

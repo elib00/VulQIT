@@ -1,6 +1,7 @@
 package com.example.vulqit;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -72,6 +73,25 @@ public class MapFragment extends Fragment {
         return fragment;
     }
 
+    public static MapFragment newInstance(double latitude, double longitude) {
+        MapFragment fragment = new MapFragment();
+        Bundle args = new Bundle();
+        args.putDouble("latitude", latitude);
+        args.putDouble("longitude", longitude);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+//    public static MapFragment newInstance(double latitude, double longitude) {
+//        MapFragment fragment = new MapFragment();
+//        Bundle args = new Bundle();
+//        args.putDouble("latitude", latitude);
+//        args.putDouble("longitude", longitude);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,27 +106,37 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_map, container, false);
-
         supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        fusedLocationProviderClient = (FusedLocationProviderClient) LocationServices.getFusedLocationProviderClient(requireActivity());
 
-        Dexter.withContext(requireContext()).withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                .withListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        getCurrentLocation();
-                    }
+        Bundle args =  getArguments();
 
-                    @Override
-                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+        if(args != null){
+            double latitude = args.getDouble("latitude", 0.0);
+            double longitude = args.getDouble("longitude", 0.0);
+            updateMapLocation(supportMapFragment, latitude, longitude);
+            setArguments(null);
+        }else{
+            fusedLocationProviderClient = (FusedLocationProviderClient) LocationServices.getFusedLocationProviderClient(requireActivity());
 
-                    }
+            Dexter.withContext(requireContext()).withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                    .withListener(new PermissionListener() {
+                        @Override
+                        public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                            getCurrentLocation();
+                        }
 
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                        permissionToken.continuePermissionRequest();
-                    }
-                }).check();
+                        @Override
+                        public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                        }
+
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                            permissionToken.continuePermissionRequest();
+                        }
+                    }).check();
+
+        }
 
         return view;
     }
@@ -144,4 +174,45 @@ public class MapFragment extends Fragment {
             }
         });
     }
+
+
+    public void updateMapLocation(SupportMapFragment supportMapFragment, double latitude, double longitude){
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            System.out.println("walay permission");
+            return;
+        }
+        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(@NonNull GoogleMap googleMap) {
+                LatLng newLocation = new LatLng(latitude, longitude);
+                MarkerOptions markerOptions = new MarkerOptions().position(newLocation).title("Current location");
+                googleMap.addMarker(markerOptions);
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(newLocation, 15f));
+            }
+        });
+    }
+//
+//    public interface MapFragmentListener {
+//        void onMapFragmentReady();
+//    }
+//
+//    @Override
+//    public void onAttach(@NonNull Context context) {
+//        super.onAttach(context);
+//        if (context instanceof MapFragmentListener) {
+//            listener = (MapFragmentListener) context;
+//            listener.onMapFragmentReady(); // Notify the activity that the fragment is ready
+//        } else {
+//            throw new RuntimeException(context.toString() + " must implement MapFragmentListener");
+//        }
+//    }
+
+
 }
