@@ -25,9 +25,13 @@ public class ShopDetails extends AppCompatActivity {
     Button backButton;
     Button jumpToLocationButton;
 
+    //utils
+    Button jumpToServicesButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_shop_details);
 //
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -86,6 +90,12 @@ public class ShopDetails extends AppCompatActivity {
             }
         });
 
+        initializeColors();
+    }
 
+    private void initializeColors(){
+        jumpToServicesButton = (Button) findViewById(R.id.servicesButton);
+        jumpToServicesButton.setBackgroundColor(getResources().getColor(R.color.cadmium_green));
+        jumpToServicesButton.setText(getResources().getString(R.string.services_button_text));
     }
 }

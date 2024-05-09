@@ -85,14 +85,14 @@
                     android:id="@+id/imageView4"
                     android:layout_width="55dp"
                     android:layout_height="30dp"
-                    app:srcCompat="@drawable/phone_icone" />
+                    app:srcCompat="@drawable/phone_icon" />
 
                 <TextView
                     android:id="@+id/detailsShopContactNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:fontFamily="@font/poppins_light"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Contact" />
             </LinearLayout>
 
@@ -113,7 +113,7 @@
                     android:id="@+id/detailsShopLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_light"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginStart="10dp"
                     android:text="TextView" />
             </LinearLayout>
@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/poppins_light"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="TextView" />
 
             </LinearLayout>
@@ -159,15 +159,21 @@
                     android:id="@+id/detailsPlusCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_light"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginStart="10dp"
                     android:text="TextView" />
+
             </LinearLayout>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/servicesButton"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Button" />
 
         </LinearLayout>
 
