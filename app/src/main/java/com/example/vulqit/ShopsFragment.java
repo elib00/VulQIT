@@ -40,9 +40,18 @@ public class ShopsFragment extends Fragment {
     private RecyclerView shopsListContainer;
     private List<Shop> shops;
     private List<Shop> shopsListQuery;
+    private CustomAdapter adapter;
+
+    //values
     private String[] shopNames;
     private int[] imageResourceIDs;
-    private CustomAdapter adapter;
+    private String[] contactNumbers;
+    private String[] operatingTimes;
+    private String[] locations;
+    private String[] plusCodes;
+    private double[] latitudes;
+    private double[] longitudes;
+
 
     public ShopsFragment() {
         // Required empty public constructor
@@ -138,8 +147,58 @@ public class ShopsFragment extends Fragment {
                 R.drawable.shop_casay
         };
 
+        contactNumbers = new String[]{
+                "N/A",
+                "N/A",
+                "09270864397",
+                "09172049905",
+                "096870644999"
+        };
+
+        operatingTimes = new String[]{
+                "5:00 AM - 9:00 PM",
+                "7:00 AM - 9:00 PM",
+                "Open 24 hours",
+                "6:00 AM - 9:00 PM",
+                "6:00 AM - 8:00 PM"
+        };
+
+        locations = new String[] {
+                "Balud, Dalagute, Cebu",
+                "Guiwanon, Dalaguete, Cebu",
+                "Solong-on, Dalagute, Cebu",
+                "Cawayan, Dalaguete, Cebu",
+                "Casay, Dalaguete, Cebu"
+        };
+
+        plusCodes = new String[] {
+                "QG3H+MQ6",
+                "QG4J+4XJ",
+                "QG7J+QFG",
+                "RG5P+VQ8",
+                "RHG2+47M"
+        };
+
+        latitudes = new double[] {
+                9.754160840527263,
+                9.755334186062527,
+                9.76443484698375,
+                9.809660508048744,
+                9.825334186693874
+        };
+
+        longitudes = new double[] {
+                123.52939328652349,
+                123.53239126699184,
+                123.53120376700463,
+                123.53695175534837,
+                123.55067122590069
+        };
+
+
+
         for(int i = 0; i < shopNames.length; i++){
-            Shop shop = new Shop(imageResourceIDs[i], shopNames[i]);
+            Shop shop = new Shop(imageResourceIDs[i], shopNames[i], contactNumbers[i], operatingTimes[i], locations[i], plusCodes[i], latitudes[i], longitudes[i]);
             shops.add(shop);
         }
 

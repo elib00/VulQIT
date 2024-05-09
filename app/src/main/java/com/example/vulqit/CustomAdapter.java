@@ -42,6 +42,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                 Intent intent = new Intent(context, ShopDetails.class);
                 intent.putExtra("image", shop.getShopImage());
                 intent.putExtra("shop_name", shop.getShopName());
+                intent.putExtra("contact_number", shop.getContactNumber());
+                intent.putExtra("operating_time", shop.getOperatingTime());
+                intent.putExtra("location", shop.getLocation());
+                intent.putExtra("plus_code", shop.getPlusCode());
+                intent.putExtra("latitude", shop.getLatitude());
+                intent.putExtra("longitude", shop.getLongitude());
 
                 context.startActivity(intent);
             }

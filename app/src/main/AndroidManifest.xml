@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -18,15 +18,16 @@
         android:theme="@style/Theme.VulQIT"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".ShopDetailPage"
+            android:exported="false" />
+        <activity
             android:name=".ShopDetails"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" >
-
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".SplashActivity"
             android:exported="true">
