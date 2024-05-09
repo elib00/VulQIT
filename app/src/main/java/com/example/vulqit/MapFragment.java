@@ -113,7 +113,7 @@ public class MapFragment extends Fragment {
         if(args != null){
             double latitude = args.getDouble("latitude", 0.0);
             double longitude = args.getDouble("longitude", 0.0);
-            updateMapLocation(supportMapFragment, latitude, longitude);
+            updateMapLocation(latitude, longitude);
             setArguments(null);
         }else{
             fusedLocationProviderClient = (FusedLocationProviderClient) LocationServices.getFusedLocationProviderClient(requireActivity());
@@ -176,7 +176,7 @@ public class MapFragment extends Fragment {
     }
 
 
-    public void updateMapLocation(SupportMapFragment supportMapFragment, double latitude, double longitude){
+    public void updateMapLocation(double latitude, double longitude){
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions

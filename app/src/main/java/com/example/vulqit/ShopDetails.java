@@ -21,6 +21,7 @@ public class ShopDetails extends AppCompatActivity {
     TextView contactNumber;
     TextView location;
     TextView operatingHours;
+    TextView plusCode;
     Button backButton;
     Button jumpToLocationButton;
 
@@ -43,6 +44,7 @@ public class ShopDetails extends AppCompatActivity {
         contactNumber = (TextView) findViewById(R.id.detailsShopContactNumber);
         operatingHours = (TextView) findViewById(R.id.detailsShopOperatingHours);
         location = (TextView) findViewById(R.id.detailsShopLocation);
+        plusCode = (TextView) findViewById(R.id.detailsPlusCode);
 
         Bundle values = getIntent().getExtras();
         if(values != null){
@@ -51,6 +53,7 @@ public class ShopDetails extends AppCompatActivity {
             contactNumber.setText(values.getString("contact_number"));
             location.setText(values.getString("location"));
             operatingHours.setText(values.getString("operating_time"));
+            plusCode.setText(values.getString("plus_code"));
         }
 
         backButton = (Button) findViewById(R.id.backButton);
