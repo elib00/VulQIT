@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.imageview.ShapeableImageView;
+
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder>{
@@ -51,6 +54,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                 intent.putExtra("plus_code", shop.getPlusCode());
                 intent.putExtra("latitude", shop.getLatitude());
                 intent.putExtra("longitude", shop.getLongitude());
+
+                JSONObject serviceJSON = new JSONObject(shop.getService());
+                intent.putExtra("service", serviceJSON.toString());
 
                 activity.startActivityForResult(intent, 1);
             }

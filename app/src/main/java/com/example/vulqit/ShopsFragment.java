@@ -16,6 +16,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -51,6 +52,8 @@ public class ShopsFragment extends Fragment {
     private String[] plusCodes;
     private double[] latitudes;
     private double[] longitudes;
+
+    ArrayList<HashMap<String, String>> services;
 
 
     public ShopsFragment() {
@@ -195,10 +198,34 @@ public class ShopsFragment extends Fragment {
                 123.55067122590069
         };
 
+        services = new ArrayList<HashMap<String, String>>(){
+            {
+                add(new HashMap<String, String>() {{
+                    put("Vulcanize", "50.0");
+                    put("Inflate", "5.0");
+                }});
+                add(new HashMap<String, String>() {{
+                    put("Vulcanize", "60.0");
+                    put("Inflate", "10.0");
+                }});
 
+                add(new HashMap<String, String>() {{
+                    put("Vulcanize", "60.0");
+                    put("Inflate", "N/A");
+                }});
+                add(new HashMap<String, String>() {{
+                    put("Vulcanize", "50.0");
+                    put("Inflate", "5.0");
+                }});
+                add(new HashMap<String, String>() {{
+                    put("Vulcanize", "50.0");
+                    put("Inflate", "5.0");
+                }});
+            }
+        };
 
         for(int i = 0; i < shopNames.length; i++){
-            Shop shop = new Shop(imageResourceIDs[i], shopNames[i], contactNumbers[i], operatingTimes[i], locations[i], plusCodes[i], latitudes[i], longitudes[i]);
+            Shop shop = new Shop(imageResourceIDs[i], shopNames[i], contactNumbers[i], operatingTimes[i], locations[i], plusCodes[i], latitudes[i], longitudes[i], services.get(i));
             shops.add(shop);
         }
 

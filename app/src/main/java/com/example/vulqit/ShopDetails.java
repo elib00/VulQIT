@@ -9,11 +9,10 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.google.android.material.imageview.ShapeableImageView;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class ShopDetails extends AppCompatActivity {
     TextView shopName;
@@ -27,7 +26,6 @@ public class ShopDetails extends AppCompatActivity {
 
     //utils
     Button jumpToServicesButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +60,8 @@ public class ShopDetails extends AppCompatActivity {
 
         backButton = (Button) findViewById(R.id.backButton);
         jumpToLocationButton = (Button) findViewById(R.id.jumpToLocationButton);
+        jumpToServicesButton = (Button) findViewById(R.id.servicesButton);
+
         backButton.setOnClickListener(new View.OnClickListener() {
             //exit the page
             @Override
@@ -77,8 +77,6 @@ public class ShopDetails extends AppCompatActivity {
                 assert values != null;
                 double latitude = values.getDouble("latitude");
                 double longitude = values.getDouble("longitude");
-                System.out.println(latitude);
-                System.out.println(longitude);
 
                 // Create an intent to navigate back to MapFragment
                 Intent intent = new Intent(ShopDetails.this, MainActivity.class);
@@ -87,6 +85,17 @@ public class ShopDetails extends AppCompatActivity {
                 setResult(Activity.RESULT_OK, intent);
                 System.out.println("na finish na");
                 finish();
+            }
+        });
+
+        jumpToServicesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShopDetails.this, ShopServices.class);
+                assert values != null;
+                String mapString = values.getString("service");
+                intent.putExtra("service", mapString);
+                startActivity(intent);
             }
         });
 

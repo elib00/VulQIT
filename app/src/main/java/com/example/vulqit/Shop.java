@@ -1,5 +1,7 @@
 package com.example.vulqit;
 
+import java.util.HashMap;
+
 public class Shop {
     private final int shopImage;
     private final String shopName;
@@ -9,8 +11,9 @@ public class Shop {
     private final String plusCode;
     private final double latitude;
     private final double longitude;
+    private final HashMap<String, String> service;
 
-    public Shop(int shopImage, String shopName, String contactNumber, String operatingTime, String location, String plusCode, double latitude, double longitude) {
+    public Shop(int shopImage, String shopName, String contactNumber, String operatingTime, String location, String plusCode, double latitude, double longitude, HashMap<String, String> service) {
         this.shopImage = shopImage;
         this.shopName = shopName;
         this.contactNumber = contactNumber;
@@ -19,6 +22,7 @@ public class Shop {
         this.plusCode = plusCode;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.service = service;
     }
 
     public String getShopName(){
@@ -52,5 +56,9 @@ public class Shop {
 
     public double getLongitude() {
         return longitude;
+    }
+
+    public HashMap<String, String> getService(){
+        return service;
     }
 }

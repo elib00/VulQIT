@@ -18,6 +18,9 @@
         android:theme="@style/Theme.VulQIT"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".ShopServices"
+            android:exported="false" />
+        <activity
             android:name=".ShopDetailPage"
             android:exported="false" />
         <activity
@@ -27,7 +30,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">

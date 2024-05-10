@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:background="#FFFFFF"
-        
         app:itemIconTint="@color/cadmium_green"
         app:itemTextColor="@color/cadmium_green"
         app:menu="@menu/bottom_nav_menu" />
