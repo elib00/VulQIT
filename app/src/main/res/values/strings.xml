@@ -9,4 +9,6 @@
     <string name="casay">Casay Vulcanizing Shop</string>
     <string name="app_api_key">AIzaSyC_vY7Gf_6U8ASpGeyrEPKGwga2il7KSvk</string>
     <string name="services_button_text">Services</string>
+    <string name="productsHeading">Products</string>
+    <string name="servicesHeading">Services</string>
 </resources>

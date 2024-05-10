@@ -201,25 +201,25 @@ public class ShopsFragment extends Fragment {
         services = new ArrayList<HashMap<String, String>>(){
             {
                 add(new HashMap<String, String>() {{
-                    put("Vulcanize", "50.0");
-                    put("Inflate", "5.0");
+                    put("Vulcanize", "50.00");
+                    put("Inflate", "5.00");
                 }});
                 add(new HashMap<String, String>() {{
-                    put("Vulcanize", "60.0");
-                    put("Inflate", "10.0");
+                    put("Vulcanize", "60.00");
+                    put("Inflate", "10.00");
                 }});
 
                 add(new HashMap<String, String>() {{
-                    put("Vulcanize", "60.0");
+                    put("Vulcanize", "60.00");
                     put("Inflate", "N/A");
                 }});
                 add(new HashMap<String, String>() {{
-                    put("Vulcanize", "50.0");
-                    put("Inflate", "5.0");
+                    put("Vulcanize", "50.00");
+                    put("Inflate", "5.00");
                 }});
                 add(new HashMap<String, String>() {{
-                    put("Vulcanize", "50.0");
-                    put("Inflate", "5.0");
+                    put("Vulcanize", "50.00");
+                    put("Inflate", "5.00");
                 }});
             }
         };
