@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">VulQIT</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="junrod">Junrod Vulcanizing Shop</string>
     <string name="balud">Balud Vulcanizing Shop</string>
     <string name="guiwanon">Guiwanon Vulcanizing Shop</string>
     <string name="solongon">Solong-on Vulcanizing Shop</string>

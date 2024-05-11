@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -83,7 +84,7 @@ public class ShopDetails extends AppCompatActivity {
                 intent.putExtra("latitude", latitude);
                 intent.putExtra("longitude", longitude);
                 setResult(Activity.RESULT_OK, intent);
-                System.out.println("na finish na");
+                Toast.makeText(ShopDetails.this, String.format("Locating %s", values.getString("shop_name")), Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

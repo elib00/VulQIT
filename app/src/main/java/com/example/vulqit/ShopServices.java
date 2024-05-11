@@ -71,7 +71,11 @@ public class ShopServices extends AppCompatActivity {
             TextView servicePrice = row.findViewById(R.id.servicePrice);
 
             serviceName.setText(key);
-            servicePrice.setText("PHP " + value);
+            if(value.equals("N/A")){
+                servicePrice.setText(value);
+            }else{
+                servicePrice.setText(String.format("PHP %s", value));
+            }
 
             servicesTable.addView(row);
         }

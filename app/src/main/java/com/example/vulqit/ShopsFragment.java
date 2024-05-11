@@ -139,7 +139,8 @@ public class ShopsFragment extends Fragment {
                 getString(R.string.guiwanon),
                 getString(R.string.solongon),
                 getString(R.string.cawayan),
-                getString(R.string.casay)
+                getString(R.string.casay),
+                getString(R.string.junrod)
         };
 
         imageResourceIDs = new int[]{
@@ -147,7 +148,8 @@ public class ShopsFragment extends Fragment {
                 R.drawable.shop_guiwanon,
                 R.drawable.shop_solongon,
                 R.drawable.shop_cawayan,
-                R.drawable.shop_casay
+                R.drawable.shop_casay,
+                R.drawable.shop_junrod
         };
 
         contactNumbers = new String[]{
@@ -155,7 +157,8 @@ public class ShopsFragment extends Fragment {
                 "N/A",
                 "09270864397",
                 "09172049905",
-                "096870644999"
+                "096870644999",
+                "09291225946"
         };
 
         operatingTimes = new String[]{
@@ -163,7 +166,8 @@ public class ShopsFragment extends Fragment {
                 "7:00 AM - 9:00 PM",
                 "Open 24 hours",
                 "6:00 AM - 9:00 PM",
-                "6:00 AM - 8:00 PM"
+                "6:00 AM - 8:00 PM",
+                "6:00 AM - 6:00 PM"
         };
 
         locations = new String[] {
@@ -171,7 +175,8 @@ public class ShopsFragment extends Fragment {
                 "Guiwanon, Dalaguete, Cebu",
                 "Solong-on, Dalaguete, Cebu",
                 "Cawayan, Dalaguete, Cebu",
-                "Casay, Dalaguete, Cebu"
+                "Casay, Dalaguete, Cebu",
+                "Poblacion, Dalaguete, Cebu"
         };
 
         plusCodes = new String[] {
@@ -179,7 +184,8 @@ public class ShopsFragment extends Fragment {
                 "QG4J+4XJ",
                 "QG7J+QFG",
                 "RG5P+VQ8",
-                "RHG2+47M"
+                "RHG2+47M",
+                "QG5M+67"
         };
 
         latitudes = new double[] {
@@ -187,7 +193,8 @@ public class ShopsFragment extends Fragment {
                 9.755334186062527,
                 9.76443484698375,
                 9.809660508048744,
-                9.825334186693874
+                9.825334186693874,
+                9.758147130092338
         };
 
         longitudes = new double[] {
@@ -195,7 +202,8 @@ public class ShopsFragment extends Fragment {
                 123.53239126699184,
                 123.53120376700463,
                 123.53695175534837,
-                123.55067122590069
+                123.55067122590069,
+                123.53313620176544
         };
 
         services = new ArrayList<HashMap<String, String>>(){
@@ -220,6 +228,12 @@ public class ShopsFragment extends Fragment {
                 add(new HashMap<String, String>() {{
                     put("Vulcanize", "50.00");
                     put("Inflate", "5.00");
+                }});
+                add(new HashMap<String, String>(){{
+                    put("Vulcanize", "40.00");
+                    put("Nitrogen Air", "5.00");
+                    put("Cold/Hot Patch", "80.00");
+                    put("Car Wash", "100.00");
                 }});
             }
         };

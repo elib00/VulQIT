@@ -19,6 +19,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/poppins_regular"
             android:text="TextView"
+            android:textAlignment="textStart"
             android:textSize="20sp" />
 
         <TextView
@@ -28,6 +29,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/poppins_light"
             android:text="TextView"
+            android:textAlignment="textEnd"
             android:textSize="20sp" />
 
     </LinearLayout>
